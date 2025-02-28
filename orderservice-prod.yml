@@ -2,7 +2,7 @@ spring:
   application:
     name: "order-service"
   datasource:
-    url: jdbc:postgresql://localhost:5433/order
+    url: "jdbc:postgresql://pg-service:5435/order-service"
     username: postgres
     password: test
   jpa:
@@ -23,15 +23,12 @@ spring:
           content-type: application/json
       kafka:
         binder:
-          brokers: localhost:9092
-
-server:
-  port: 8120
+          brokers: kafka-service:9092
 
 eureka:
   client:
     service-url:
-      defaultZone: "http://localhost:8888/eureka/"
+      defaultZone: "http://eureka-service:8888/eureka/"
     register-with-eureka: true
     fetch-registry: true
   instance:
